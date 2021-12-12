@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>My First Parcel App</title>
+    <link rel="stylesheet" href="jspreadsheet.css" />
+</head>
+<body>
+<h1>Hello, Stephen!</h1>
+a: <input id="a" type="text" value=""> +
+b: <input id="b" type="text" value="">
+
+<script type="module">
+    import {sum} from './app'
+    document.querySelector('#btn').addEventListener('click', ()=>{
+        let a = parseInt( document.querySelector("#a").value)
+        let b = parseInt( document.querySelector("#b").value)
+        alert( sum(a,b) )
+    })
+</script>
+</body>
+</html>

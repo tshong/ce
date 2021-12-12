@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>My First Parcel App</title>
+    <link rel="stylesheet" href="jspreadsheet.css"/>
+    <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
+</head>
+<body>
+
+<div id="spreadsheet"></div>
+
+<script type="module">
+    import {ok} from './myFunc'
+    // ok('Stephen')
+
+    import jspreadsheet from './myApp'
+
+    var data = [
+        ['Jazz', 'Honda', '2019-02-12', '', true, '$ 2.000,00', '#777700'],
+        ['Civic', 'Honda', '2018-07-11', '', true, '$ 4.000,01', '#007777'],
+    ];
+
+    console.log('jspreadsheet', jspreadsheet)
+
+    jspreadsheet(document.getElementById('spreadsheet'), {
+        data: data,
+        columns: [
+            {type: 'text', title: 'Car', width: 120},
+            {type: 'dropdown', title: 'Make', width: 200, source: ["Alfa Romeo", "Audi", "Bmw"]},
+            {type: 'calendar', title: 'Available', width: 200},
+            {type: 'image', title: 'Photo', width: 120},
+            {type: 'checkbox', title: 'Stock', width: 80},
+            {type: 'numeric', title: 'Price', width: 100, mask: '$ #.##,00', decimal: ','},
+            {type: 'color', width: 100, render: 'square',}
+        ],
+        updateTable: function(el, cell, x, y, source, value, id) {
+            if (x === 2 && y === 1) {
+                cell.classList.add('x-label');
+            }
+        }
+    });
+</script>
+</body>
+</html>
